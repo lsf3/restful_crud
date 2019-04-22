@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>empsList.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta charset=UTF-8>
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+
+	<h1 align="center">员工信息表</h1>
+
+	<table width="66%" border="1" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<th align="center">id</th>
+			<th align="center">lastName</th>
+			<th align="center">gender</th>
+			<th align="center">email</th>
+			<th align="center">dId</th>
+			<th align="center">count</th>
+			<th align="center">Eidt</th>
+			<th align="center">Delete</th>
+		</tr>
+		<tr th:each="u,var : ${emps}" th:object="${u}">
+			<td align="center" th:text="*{id}"></td>
+			<td align="center" th:text="*{lastName}"></td>
+			<td align="center" th:text="*{gender}=='0'?'女':'男'"></td>
+			<td align="center" th:text="*{email}"></td>
+			<td align="center" th:text="*{dId}"></td>
+			<td align="center" th:text="${var.count}"></td>
+			<td align="center"><a th:href="@{/emp/toEditPage/}+*{id}">修改</a></td>
+			<td align="center">
+				<form action="#" th:action="@{/emp/}+*{id}" method="post">
+					<input type="hidden" name="_method" value="delete">
+					<button type="submit" th:text="删除"></button>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<form action="" th:action="@{/emp/}">
+			<label>请输入需要查询的员工id:</label> <input type="text" name="wwid"
+				placeholder="1001" /> <input type="submit" th:value="查找">
+
+		</form>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<a th:href="@{/editEmp}">去添加员工</a>
+	</div>
+	<br>
+	
+	
+	
+
+
+
+	<br>
+	<div align="center">
+		<a th:href="@{/hello}">返回首页</a>
+	</div>
+	<br>
+	<br>
+	<br>
+
+
+
+
+
+</body>
+</html>

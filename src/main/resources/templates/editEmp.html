@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>editEmp.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta charset=UTF-8>
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<!-- 这是一个可以不回显的员工添加和修改两用页面  -->
+	<br>
+	<div align="center">
+		<h3 th:if="${employee}==null">注册员工信息</h3>
+		<h3 th:if="${employee}!=null">
+			<span th:if="${employee.id}==null">注册员工信息</span>
+		</h3>
+		<h3 th:if="${employee}!=null">
+			<span th:if="${employee.id}!=null">修改id为<span
+				th:text="${employee.id}" />的员工信息
+			</span>
+
+		</h3>
+	</div>
+
+	<form action="#" th:action="@{/emp}" method="post">
+
+		<span th:if="${employee}!=null"> <input type="hidden"
+			name="_method" value="put" th:if="${employee.id!=null}" />
+		</span> <input type="hidden" name="id" th:value="${employee.id}"
+			th:if="${employee!=null}" />
+		<table align="center">
+
+			<tr>
+				<td align="left">lastName :</td>
+			</tr>
+			<tr>
+
+				<td align="center"><input type="text" name="lastName"
+					th:value="${employee!=null}?${employee.lastName}"></td>
+				<td><font color="red" th:errors="${employee.lastName}"
+						th:if="${employee!=null}"></font></td>
+
+			</tr>
+			<tr>
+				<td align="left">email :</td>
+			</tr>
+			<tr>
+
+				<td align="center"><input type="text" name="email"
+					th:value="${employee!=null}?${employee.email}"></td>
+				<td><font color="red" th:errors="${employee.email}"
+					th:if="${employee!=null}"></font></td>
+
+			</tr>
+			<tr>
+				<td align="left">gender :</td>
+			</tr>
+			<tr>
+				<td align="center"><input type="text" name="gender"
+					th:value="${employee!=null}?${employee.gender}"></td>
+				<td><font color="red" th:errors="${employee.gender}"
+						th:if="${employee!=null}"></font></td>
+
+			</tr>
+			<tr>
+				<td align="left">dId :</td>
+			</tr>
+			<tr>
+
+				<td align="center"><input type="text" name="dId"
+					th:value="${employee!=null}?${employee.dId}"></td>
+				<td><font color="red" th:errors="${employee.dId}"
+						th:if="${employee!=null}">
+					</font></td>
+		</table>
+		<br>
+		<div align="center">   
+			<span th:if="${employee}!=null">
+				<button type="submit" th:text="${employee.id==null?'注册':'修改'}"></button>
+			</span> <span th:if="${employee}==null">
+				<button type="submit" th:text="注册"></button>
+			</span>
+
+		</div>
+	</form>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<form action="" th:action="@{/emp/}">
+			<label>请输入需要查询的员工id:</label> <input type="text" name="wwid"
+				placeholder="1001" /> <input type="submit" th:value="查找">
+
+		</form>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<a th:href="@{/hello}">返回首页</a>
+	</div>
+	<br>
+	<br>
+	<br>
+
+
+
+</body>
+</html>

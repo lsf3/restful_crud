@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>hello.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta charset=UTF-8 />
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<br>
+	<div align="center">
+		<h1>欢迎来到首页</h1>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<a th:href="@{/emps}">查看员工信息表</a>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<form action="" th:action="@{/emp/}">
+			<label>请输入需要查询的员工id:</label> <input type="text" name="wwid"
+				placeholder="1001" /> <input type="submit"
+				th:value="查找">
+
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<form action="" th:action="@{/editEmp}" method="get">
+			<label>请输入需要修改的员工id:</label> <input type="text" name="wwid"
+				placeholder="1001" /> <input type="submit"
+				th:value="去修改">
+
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<form action="" th:action="@{/emp}" method="post">
+		<input type="hidden" name="_method" value="delete">
+			<label>请输入需要删除的员工id:</label> <input type="text" name="id"
+				placeholder="1001" /> <input type="submit"
+				th:value="立即删除">
+
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<a th:href="@{/editEmp}">去添加员工</a>
+	</div>
+	<br>
+
+
+
+</body>
+</html>
