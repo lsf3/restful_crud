@@ -21,9 +21,8 @@ public class Employee implements Serializable {
 	
 	private Integer id;
 	
-	@Pattern(regexp = "^[0-9]+(.[0-9]{2})?$", message = "{valid.format}")
+//	@Pattern(regexp = "  ", message = "{valid.format}")
 	@Length(min=1,max=7,message="长度必须为1到7位")
-	@NotBlank(message="必填!")
 	private String lastName;
 	
 	@NotBlank(message="必填!")
